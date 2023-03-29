@@ -2,20 +2,25 @@ import React, { useEffect, useState } from 'react';
 import Modal from './Modal';
 import Tool from './Tool';
 
-const Header = ({ children }) => {
+const Header = () => {
   const [isLimit, setIslimet] = useState(false);
   const [tools, setTools] = useState([]);
   const [details, setDetails] = useState({});
   const [id, setId] = useState(null);
-//  console.log(details)
 
+  const handleSort = () => {
+    console.log('click')
+    const sortData = tools.sort((a, b) => {
+      return new Date(a.published_in) - new Date(b.published_in)
+    });
+    setTools([...tools, sortData])
+  }
 
-
-  useEffect( () =>{
+  useEffect(() => {
     fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`)
-    .then(res => res.json())
-    .then(data => setDetails(data.data))
-  },[id]);
+      .then(res => res.json())
+      .then(data => setDetails(data.data))
+  }, [id]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -30,7 +35,7 @@ const Header = ({ children }) => {
   return (
     <>
       <div className='text-center mt-4 mb-12'>
-        <button >{children}</button>
+        <button onClick={handleSort} className='bg-red-400 py-2 px-4 rounded '>Date by sort</button>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
         {

@@ -3,7 +3,7 @@ import React from 'react';
 const Modal = ({ details }) => {
   const { pricing, description, image_link, features, integrations, input_output_examples } = details;
   // console.log(Object.values(features || {}))
-  console.log(details)
+
   return (
     <>
       <input type="checkbox" id="my-modal-5" className="modal-toggle" />

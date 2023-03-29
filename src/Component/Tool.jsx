@@ -3,7 +3,7 @@ import { FaArrowCircleRight } from "react-icons/fa";
 
 const Tool = ({ tool, setId }) => {
   const { id, name, description, image, features, published_in } = tool;
-  // console.log(id)
+
   return (
     <>
       <div className="card card-compact w-full bg-base-100 shadow-xl">
@@ -27,7 +27,6 @@ const Tool = ({ tool, setId }) => {
             <label onClick={() => setId(id)} htmlFor="my-modal-5" className="btn">
               <FaArrowCircleRight></FaArrowCircleRight>
             </label>
-
           </div>
         </div>
       </div>
